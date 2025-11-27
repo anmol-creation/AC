@@ -212,13 +212,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
             <div class="item-actions">
-                <a href="${imgData.url}" download="${imgData.name}" class="download-btn">Download</a>
+                <a href="${imgData.url}" class="download-btn">Download</a>
                 <button class="remove-btn" data-index="${index}">Remove</button>
             </div>
         `;
 
         // Insert the safe file name element
         div.querySelector('.img-info').prepend(fileNameDiv);
+
+        // Set safe download attribute
+        div.querySelector('.download-btn').setAttribute('download', imgData.name);
 
         // Remove Handler
         div.querySelector('.remove-btn').addEventListener('click', (e) => {

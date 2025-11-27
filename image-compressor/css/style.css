@@ -483,6 +483,10 @@ input:checked + .slider:before {
 
 /* Responsive */
 @media (max-width: 900px) {
+    body {
+        overflow: auto;
+    }
+
     .main-container {
         flex-direction: column;
         height: auto;
