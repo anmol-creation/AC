@@ -71,7 +71,7 @@ img {
 
 /* Muted .ac */
 .sub-text {
-  color: blue;      /* light grey muted */
+  color: var(--muted);      /* light grey muted */
   font-weight: 400;
   font-size: 46px;
 }
