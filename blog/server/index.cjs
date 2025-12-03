@@ -11,6 +11,38 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
+// Basic Auth Middleware
+const checkAuth = (req, res, next) => {
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  // 1. If no password set, deny access completely (safety default)
+  if (!adminPassword) {
+    return res.status(403).json({ error: 'Admin access disabled. Set ADMIN_PASSWORD env var.' });
+  }
+
+  // 2. Check Authorization header
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    res.set('WWW-Authenticate', 'Basic realm="Admin Area"');
+    return res.status(401).json({ error: 'Authentication required' });
+  }
+
+  const auth = new Buffer.from(authHeader.split(' ')[1], 'base64').toString().split(':');
+  const user = auth[0];
+  const pass = auth[1];
+
+  // User can be anything, password must match
+  if (pass === adminPassword) {
+    next();
+  } else {
+    res.set('WWW-Authenticate', 'Basic realm="Admin Area"');
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+};
+
+// Protect all API routes
+app.use('/api', checkAuth);
+
 const POSTS_DIR = path.join(__dirname, '../content/posts');
 const IMAGES_DIR = path.join(__dirname, '../public/assets/images');
 

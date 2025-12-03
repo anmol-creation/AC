@@ -13,10 +13,33 @@ export default function AdminDashboard() {
     fetchPosts();
   }, []);
 
+  const fetchWithAuth = async (url, options = {}) => {
+    const password = sessionStorage.getItem('admin_password');
+    const headers = options.headers || {};
+
+    if (password) {
+      headers['Authorization'] = 'Basic ' + btoa('admin:' + password);
+    }
+
+    const res = await fetch(url, { ...options, headers });
+
+    if (res.status === 401) {
+      const newPassword = prompt('Enter Admin Password:');
+      if (newPassword) {
+        sessionStorage.setItem('admin_password', newPassword);
+        return fetchWithAuth(url, options); // Retry
+      }
+    }
+    return res;
+  };
+
   const fetchPosts = async () => {
     try {
-      const res = await fetch(`${API_URL}/posts`);
-      if (!res.ok) throw new Error('Failed to connect to local admin server. Make sure "npm run server" is running.');
+      const res = await fetchWithAuth(`${API_URL}/posts`);
+      if (!res.ok) {
+        if (res.status === 403) throw new Error('Admin access disabled (ADMIN_PASSWORD not set on server).');
+        throw new Error('Failed to connect to local admin server. Make sure "npm run server" is running.');
+      }
       const data = await res.json();
       setPosts(data);
       setError(null);
@@ -29,7 +52,7 @@ export default function AdminDashboard() {
   const deletePost = async (filename) => {
     if (!window.confirm('Are you sure you want to delete this post?')) return;
     try {
-      const res = await fetch(`${API_URL}/posts/${filename}`, {
+      const res = await fetchWithAuth(`${API_URL}/posts/${filename}`, {
         method: 'DELETE',
       });
       if (res.ok) {

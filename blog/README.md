@@ -12,13 +12,20 @@ This is a modern, clean, SEO-friendly blog theme built with React, Vite, and Tai
 
 2.  **Start the development server and admin backend:**
     We use `concurrently` to run both the React dev server and the Admin backend API.
+
+    You need to set the `ADMIN_PASSWORD` environment variable to secure the admin API, and optionally `REACT_APP_SHOW_ADMIN=true` to force show the Admin link if you are not on localhost (though it defaults to visible on localhost).
+
     ```bash
+    # Enable Admin features
+    export ADMIN_PASSWORD="mypassword"
+    export REACT_APP_SHOW_ADMIN=true
     npm run dev:all
     ```
     *   **Frontend:** http://localhost:5173
     *   **Admin Backend:** http://localhost:3001
 
     To access the Admin Dashboard, go to `http://localhost:5173/admin`.
+    The "Admin" link in the navigation header will only appear if you are on `localhost`/`127.0.0.1` or if `REACT_APP_SHOW_ADMIN=true`.
 
 ## Admin Interface
 

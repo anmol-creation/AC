@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Layout({ children }) {
   const [isDark, setIsDark] = React.useState(false);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [showAdmin, setShowAdmin] = React.useState(false);
 
   React.useEffect(() => {
     // Check system preference
@@ -14,6 +15,11 @@ export default function Layout({ children }) {
       setIsDark(true);
       document.documentElement.classList.add('dark');
     }
+
+    // Check admin visibility
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const envOverride = import.meta.env.REACT_APP_SHOW_ADMIN === 'true';
+    setShowAdmin(isLocal || envOverride);
   }, []);
 
   const toggleTheme = () => {
@@ -57,7 +63,11 @@ export default function Layout({ children }) {
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <a href="/admin" className="text-xs font-mono text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">Admin</a>
+            {showAdmin && (
+              <a href="/admin" className="text-xs font-mono text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                Admin
+              </a>
+            )}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -95,7 +105,7 @@ export default function Layout({ children }) {
                   {link.name}
                 </NavLink>
               ))}
-               <a href="/admin" className="text-sm font-mono text-gray-400">Admin</a>
+               {showAdmin && <a href="/admin" className="text-sm font-mono text-gray-400">Admin</a>}
             </nav>
           </motion.div>
         )}
