@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Edit, Trash2, Plus, AlertTriangle } from 'lucide-react';
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = '/api';
 
 export default function AdminDashboard() {
   const [posts, setPosts] = useState([]);
