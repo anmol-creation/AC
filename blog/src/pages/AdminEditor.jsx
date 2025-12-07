@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Save, Upload } from 'lucide-react';
 import { parse, stringify } from '../lib/frontmatter';
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = '/api';
 
 export default function AdminEditor() {
   const { filename } = useParams();
