@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -13,11 +14,12 @@ app.use(express.json());
 
 // Basic Auth Middleware
 const checkAuth = (req, res, next) => {
-  const adminPassword = process.env.ADMIN_PASSWORD;
+  let adminPassword = process.env.ADMIN_PASSWORD;
 
-  // 1. If no password set, deny access completely (safety default)
+  // 1. If no password set, warn and use default (for dev experience)
   if (!adminPassword) {
-    return res.status(403).json({ error: 'Admin access disabled. Set ADMIN_PASSWORD env var.' });
+    console.warn("Warning: ADMIN_PASSWORD env var not set. Using default password 'admin'.");
+    adminPassword = 'admin';
   }
 
   // 2. Check Authorization header
@@ -145,4 +147,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Admin server running at http://localhost:${PORT}`);
+  if (!process.env.ADMIN_PASSWORD) {
+    console.log("Notice: ADMIN_PASSWORD not set. Defaulting to 'admin'.");
+  }
 });
