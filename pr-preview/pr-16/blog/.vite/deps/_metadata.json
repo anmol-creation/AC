@@ -1,0 +1,82 @@
+{
+  "hash": "cbbcdc3b",
+  "configHash": "6f4cffc2",
+  "lockfileHash": "0f347ea1",
+  "browserHash": "883f9890",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "870bb554",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "4bffd7c2",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "c517f59b",
+      "needsInterop": false
+    },
+    "react-helmet-async": {
+      "src": "../../node_modules/react-helmet-async/lib/index.esm.js",
+      "file": "react-helmet-async.js",
+      "fileHash": "4fe843b3",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "93d37fda",
+      "needsInterop": false
+    },
+    "clsx": {
+      "src": "../../node_modules/clsx/dist/clsx.mjs",
+      "file": "clsx.js",
+      "fileHash": "6c566a15",
+      "needsInterop": false
+    },
+    "framer-motion": {
+      "src": "../../node_modules/framer-motion/dist/es/index.mjs",
+      "file": "framer-motion.js",
+      "fileHash": "c870b24d",
+      "needsInterop": false
+    },
+    "date-fns": {
+      "src": "../../node_modules/date-fns/index.js",
+      "file": "date-fns.js",
+      "fileHash": "444b0a41",
+      "needsInterop": false
+    },
+    "react-markdown": {
+      "src": "../../node_modules/react-markdown/index.js",
+      "file": "react-markdown.js",
+      "fileHash": "73f5f84b",
+      "needsInterop": false
+    },
+    "gray-matter": {
+      "src": "../../node_modules/gray-matter/index.js",
+      "file": "gray-matter.js",
+      "fileHash": "e3b556a4",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-OOCCGKRY": {
+      "file": "chunk-OOCCGKRY.js"
+    },
+    "chunk-JOFOE4F5": {
+      "file": "chunk-JOFOE4F5.js"
+    },
+    "chunk-42LPO3HH": {
+      "file": "chunk-42LPO3HH.js"
+    },
+    "chunk-PR4QN5HX": {
+      "file": "chunk-PR4QN5HX.js"
+    }
+  }
+}
