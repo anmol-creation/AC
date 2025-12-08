@@ -143,7 +143,7 @@ export default function AdminEditor() {
                         <select
                             value={frontmatter.status}
                             onChange={e => setFrontmatter({...frontmatter, status: e.target.value})}
-                            className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-brand-500 focus:border-brand-500"
+                            className="w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-brand-500 focus:border-brand-500"
                         >
                             <option value="draft">Draft</option>
                             <option value="published">Published</option>
@@ -156,7 +156,7 @@ export default function AdminEditor() {
                             type="date"
                             value={frontmatter.date}
                             onChange={e => setFrontmatter({...frontmatter, date: e.target.value})}
-                            className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                            className="w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         />
                     </div>
                      <div>
@@ -165,7 +165,7 @@ export default function AdminEditor() {
                             type="text"
                             value={frontmatter.slug}
                             onChange={e => setFrontmatter({...frontmatter, slug: e.target.value})}
-                            className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                            className="w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         />
                     </div>
                  </div>
@@ -179,7 +179,7 @@ export default function AdminEditor() {
                             rows="3"
                             value={frontmatter.excerpt}
                             onChange={e => setFrontmatter({...frontmatter, excerpt: e.target.value})}
-                            className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                            className="w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         />
                     </div>
 
@@ -189,7 +189,7 @@ export default function AdminEditor() {
                             type="text"
                             value={frontmatter.category}
                             onChange={e => setFrontmatter({...frontmatter, category: e.target.value})}
-                            className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                            className="w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         />
                     </div>
 
@@ -199,7 +199,7 @@ export default function AdminEditor() {
                             type="text"
                             value={frontmatter.tags}
                             onChange={e => setFrontmatter({...frontmatter, tags: e.target.value})}
-                            className="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                            className="w-full rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                         />
                     </div>
                  </div>
@@ -217,7 +217,7 @@ export default function AdminEditor() {
                             placeholder="Image URL"
                             value={frontmatter.image}
                             onChange={e => setFrontmatter({...frontmatter, image: e.target.value})}
-                            className="flex-1 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white text-sm"
+                            className="flex-1 rounded-md border-gray-300 bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white text-sm"
                          />
                      </div>
                      <div className="relative">
