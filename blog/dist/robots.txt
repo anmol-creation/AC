@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://anmol-creations.com/blog/sitemap.xml
