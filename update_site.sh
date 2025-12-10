@@ -3,6 +3,24 @@ set -e
 
 echo "Starting site update..."
 
+# 0. Check Git Identity
+if [ -z "$(git config user.email)" ] || [ -z "$(git config user.name)" ]; then
+    echo "Git identity is not set. Please enter your details."
+    echo "This is required only once."
+
+    read -p "Enter your Email: " user_email
+    read -p "Enter your Name: " user_name
+
+    if [ -n "$user_email" ] && [ -n "$user_name" ]; then
+        git config --global user.email "$user_email"
+        git config --global user.name "$user_name"
+        echo "Identity set successfully!"
+    else
+        echo "Error: Email and Name cannot be empty."
+        exit 1
+    fi
+fi
+
 # 1. Pull latest changes to avoid conflicts
 echo "Pulling latest changes..."
 git pull
