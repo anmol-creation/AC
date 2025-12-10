@@ -1,0 +1,46 @@
+name: Auto Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'blog/content/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        working-directory: ./blog
+        run: npm ci
+
+      - name: Build Blog
+        working-directory: ./blog
+        run: npm run build
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog/dist
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: auto-build blog static files [skip ci]"
+            git push origin HEAD:${{ github.ref }}
+          fi
