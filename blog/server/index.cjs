@@ -42,8 +42,14 @@ const checkAuth = (req, res, next) => {
   }
 };
 
-// Protect all API routes
-app.use('/api', checkAuth);
+// Protect specific API routes (POST, DELETE, PUT)
+// Allow GET requests to be public for local development preview
+app.use('/api', (req, res, next) => {
+  if (req.method === 'GET') {
+    return next();
+  }
+  return checkAuth(req, res, next);
+});
 
 const POSTS_DIR = path.join(__dirname, '../content/posts');
 const IMAGES_DIR = path.join(__dirname, '../public/assets/images');
