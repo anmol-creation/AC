@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="hi">
+<head>
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3565X5KNFD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-3565X5KNFD');
+  </script>
+  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anmol Creations — Portfolio</title>
+  <meta name="description" content="Anmol Agarwal — Frontend Developer, UI/UX Designer & Photographer. Portfolio showcasing projects and contact." />
+  <!-- Link your CSS file here -->
+  <link rel="stylesheet" href="../assets/css/portfolio.css">
+</head>
+<body>
+  <!-- Site wrapper -->
+  <div id="site-root">
+
+    <!-- Header -->
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+       <div class="brand">  
+  <h1 class="site-title">
+    <span class="gradient-text">Portfolio</span> 
+    <span class="sub-text">.ac</span>
+  </h1>  
+  <p class="site-tagline">Designer · Developer · Photographer</p>  
+</div>
+
+        <!-- Navigation (kept semantic, mobile toggle can be added in JS later) -->
+      
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main id="main" role="main">
+      <!-- Hero -->
+      <section id="hero" class="hero section">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <h2 class="hero-title">Main Anmol — <span class="accent">Web & Product UI</span></h2>
+            <p class="hero-sub">Main frontend developer aur visual designer hoon. Main simple, usable aur khoobsurat interfaces banata hoon.</p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#contact">Hire me</a>
+              <a class="btn btn-ghost" href="#work">Explore work</a>
+            </div>
+          </div>
+
+          <aside class="profile-card" aria-label="Profile">
+            <div class="avatar">
+              <!-- Replace src with your image -->
+              <img src="../assets/images/profile-pic.jpg" alt="Anmol Agarwal — Avatar">
+            </div>
+            <div class="profile-meta">
+              <h3 class="profile-name">Anmol Agarwal</h3>
+              <p class="profile-role">Frontend Developer & Visual Designer</p>
+              <p class="profile-cta">
+                <a class="btn btn-ghost" href="#contact">Message</a>
+                <a class="btn" href="/projects">Projects</a>
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Work / Projects -->
+      <section id="work" class="section work-section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Featured Projects</h2>
+            <p class="section-sub">Kuch selected projects jo maine banaye. Click karke details dekho.</p>
+          </header>
+
+          <div class="projects-grid" role="list">
+            <article class="project-card" role="listitem">
+              <a href="projects/project-1.html" class="project-link" aria-label="Open Project One">
+                <div class="project-thumb" aria-hidden="true">
+                  <img src="../assets/images/sketches.jpg" alt="">
+                </div>
+                <div class="project-meta">
+                  <h3 class="project-title">Sketches</h3>
+                  <p class="project-tag">Web App · React</p>
+                </div>
+              </a>
+            </article>
+
+            <article class="project-card" role="listitem">
+              <a href="photography/photography.html" class="project-link" aria-label="Open Project Two">
+                <div class="project-thumb" aria-hidden="true">
+                  <img src="../assets/images/photography.jpg" alt="">
+                </div>
+                <div class="project-meta">
+                  <h3 class="project-title">Photography</h3>
+                  <p class="project-tag">Branding · Identity</p>
+                </div>
+              </a>
+            </article>
+
+            <article class="project-card" role="listitem">
+              <a href="projects/project-3.html" class="project-link" aria-label="Open Project Three">
+                <div class="project-thumb" aria-hidden="true">
+                  <img src="../assets/images/photoedits.jpg" alt="">
+                </div>
+                <div class="project-meta">
+                  <h3 class="project-title">Photo Edit</h3>
+                  <p class="project-tag">Photography · Editorial</p>
+                </div>
+              </a>
+            </article>
+
+            <!-- Add more project cards as needed -->
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section about-section">
+        <div class="container">
+          <header class="section-header">
+            <h2>About</h2>
+          </header>
+          <div class="about-content">
+            <p>Main UX-focused frontend developer — HTML, CSS, JavaScript, React; aur photography bhi karta hoon. Mera kaam user-centered design aur performance optimized frontend banane pe focus karta hai.</p>
+            <ul class="skills-list" aria-label="Skills">
+              <li>HTML & Semantic markup</li>
+              <li>CSS — Responsive, animations</li>
+              <li>JavaScript & React</li>
+              <li>Design tools — Figma, Photoshop</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section contact-section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Contact</h2>
+            <p class="section-sub">Koi project ya collaboration? Message bhejo.</p>
+          </header>
+
+          <div class="contact-grid">
+            <form class="contact-form" action="/send-message" method="POST" novalidate>
+              <div class="form-row">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required placeholder="Your name">
+              </div>
+              <div class="form-row">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required placeholder="you@example.com">
+              </div>
+              <div class="form-row full">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" placeholder="Project / Query (optional)">
+              </div>
+              <div class="form-row full">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project..."></textarea>
+              </div>
+              <div class="form-row full form-actions">
+                <button type="submit" class="btn btn-primary">Send message</button>
+                <button type="reset" class="btn btn-ghost">Reset</button>
+              </div>
+            </form>
+
+            <aside class="contact-info" aria-label="Contact information">
+              <h3>Quick contact</h3>
+              <p>Email: <a href="mailto:hello@anmolcreations.com">hello@anmolcreations.com</a></p>
+              <p>Location: India</p>
+              <h4>Follow</h4>
+              <ul class="social-list">
+                <li><a href="#" target="_blank" rel="noopener">Dribbble</a></li>
+                <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>© <span id="year">2025</span> Anmol Creations — Built with ♥</p>
+        <p class="foot-note"><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Small inline script to set current year (optional; still HTML) -->
+  <script>
+    (function(){ var y = new Date().getFullYear(); document.getElementById('year').textContent = y; })();
+  </script>
+</body>
+</html>
