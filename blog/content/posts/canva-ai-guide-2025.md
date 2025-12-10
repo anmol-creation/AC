@@ -12,7 +12,7 @@ status: "published"
 
 # Canva AI Kya Hai? Canva AI Se Professional Design Kaise Banaye? (Complete Guide 2025)
 
-[Canva AI Kya Hai? Canva AI Se Professional Design Kaise Banaye? (Complete Guide 2025)
+Canva AI Kya Hai? Canva AI Se Professional Design Kaise Banaye? (Complete Guide 2025)
 
 Introduction – Canva AI ne Design Industry Kaise Badal Di
 
@@ -308,4 +308,4 @@ Agar aap regular content banate ho → 100% worth it.
 Canva AI 2025 ka sabse easy, powerful aur beginner-friendly design tool hai.
 Chahe aap YouTuber ho, blogger ho, student ho ya business owner — Canva AI aapko professional designs, unique AI images, aur ready-to-post content bana kar de deta hai.
 
-Aapka content 10x fast, 10x attractive aur 10x productive ho jata hai.]
+Aapka content 10x fast, 10x attractive aur 10x productive ho jata hai.
