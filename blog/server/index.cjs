@@ -5,12 +5,20 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const matter = require('gray-matter');
+const cloudinary = require('cloudinary').v2;
 
 const app = express();
 const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
+
+// Cloudinary Config
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 // Basic Auth Middleware
 const checkAuth = (req, res, next) => {
@@ -149,6 +157,72 @@ app.delete('/api/posts/:filename', (req, res) => {
 app.post('/api/upload', upload.single('image'), (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
   res.json({ url: `/assets/images/${req.file.filename}` });
+});
+
+// Public Gallery API (Secure Cloudinary Wrapper)
+app.get('/api/gallery/:folder', async (req, res) => {
+  const { folder } = req.params;
+  const ALLOWED_FOLDERS = ['sketches', 'photography', 'art']; // Whitelist for security
+
+  if (!ALLOWED_FOLDERS.includes(folder)) {
+    return res.status(403).json({ error: 'Access denied to this folder' });
+  }
+
+  // If Cloudinary keys are missing, return mock data for development
+  if (!process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+      console.warn("Cloudinary keys missing. Serving mock data.");
+      return res.json([
+          { public_id: 'mock1', url: 'https://images.pexels.com/photos/1684149/pexels-photo-1684149.jpeg?auto=compress&cs=tinysrgb&w=800' },
+          { public_id: 'mock2', url: 'https://images.pexels.com/photos/1988681/pexels-photo-1988681.jpeg?auto=compress&cs=tinysrgb&w=800' },
+          { public_id: 'mock3', url: 'https://images.pexels.com/photos/354939/pexels-photo-354939.jpeg?auto=compress&cs=tinysrgb&w=800' },
+          { public_id: 'mock4', url: 'https://images.pexels.com/photos/1005711/pexels-photo-1005711.jpeg?auto=compress&cs=tinysrgb&w=800' },
+          { public_id: 'mock5', url: 'https://images.pexels.com/photos/3052361/pexels-photo-3052361.jpeg?auto=compress&cs=tinysrgb&w=800' }
+      ]);
+  }
+
+  try {
+      // 1. List resources from the specific folder
+      // Note: Cloudinary Admin API has rate limits. For production with high traffic, cache this response.
+      // We look for 'authenticated' (private) images first as per user request.
+      let result;
+      try {
+          result = await cloudinary.api.resources({
+              type: 'authenticated',
+              prefix: folder + '/',
+              max_results: 50
+          });
+      } catch (e) {
+          // Fallback to 'upload' (public) if authenticated fetch fails or is empty/not used
+          console.log("Authenticated fetch failed or empty, trying public...", e.message);
+          result = await cloudinary.api.resources({
+              type: 'upload',
+              prefix: folder + '/',
+              max_results: 50
+          });
+      }
+
+      // 2. Transform URLs (Add Watermark + Sign URL for private access)
+      const resources = result.resources.map(img => {
+          const watermarkedUrl = cloudinary.url(img.public_id, {
+               type: img.type, // 'authenticated' or 'upload'
+               sign_url: true, // Generate signed URL for authenticated images
+               transformation: [
+                   { width: 1000, crop: "limit" },
+                   { overlay: { font_family: "Arial", font_size: 60, text: "© Anmol Creations" }, color: "white", opacity: 50, gravity: "center" }
+               ]
+          });
+
+          return {
+              public_id: img.public_id,
+              url: watermarkedUrl
+          };
+      });
+
+      res.json(resources);
+  } catch (error) {
+      console.error("Cloudinary Error:", error);
+      res.status(500).json({ error: 'Failed to fetch gallery' });
+  }
 });
 
 app.listen(PORT, () => {
