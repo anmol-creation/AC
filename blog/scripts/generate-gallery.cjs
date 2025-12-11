@@ -21,7 +21,7 @@ async function generateGallery() {
     console.log('Generating Static Gallery for Sketches...');
 
     try {
-        const folder = 'sketches';
+        const folder = 'home/sketches';
 
         // 1. Fetch images from Cloudinary
         // Using resources_by_asset_folder for "Fixed Folders" support
