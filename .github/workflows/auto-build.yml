@@ -32,6 +32,14 @@ jobs:
         working-directory: ./blog
         run: npm run build
 
+      - name: Generate Gallery
+        working-directory: ./blog
+        env:
+          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+        run: node scripts/generate-gallery.cjs
+
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
