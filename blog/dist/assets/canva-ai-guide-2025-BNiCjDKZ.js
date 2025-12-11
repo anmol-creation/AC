@@ -7,7 +7,7 @@ category: "Design"
 excerpt: "Learn how to use Canva AI to create professional designs effortlessly. A complete guide for 2025."
 image: ""
 tags: ["Canva", "AI", "Design", "Tutorial"]
-status: "published"
+status: "draft"
 ---
 
 # Canva AI Kya Hai? Canva AI Se Professional Design Kaise Banaye? (Complete Guide 2025)
