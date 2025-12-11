@@ -7,7 +7,7 @@ category: "Misc"
 excerpt: "This is a draft post that should not be visible in production."
 image: ""
 tags: ["Draft"]
-status: "draft"
+status: "published"
 ---
 
 # This is a draft
