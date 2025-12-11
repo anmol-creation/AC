@@ -26,7 +26,7 @@ Canva AI aapka time bachata hai, design ko 10x zyada attractive banata hai aur b
 
 ---
 
-⭐ Canva AI Kya Hai?
+⭐ <h2>Canva AI Kya Hai?</h2>
 
 Canva AI ek advanced artificial intelligence based design system hai jo automatically:
 
@@ -48,12 +48,12 @@ Canva AI ka goal hai “Everyone can design anything” — bina professional sk
 
 ---
 
-🔥 Canva AI Ke Top Features (2025 Updated)
+🔥 <h2>Canva AI Ke Top Features (2025 Updated)</h2>
 
 
 ---
 
-1. Magic Write – AI Writer
+<h3>1. Magic Write – AI Writer</h3>
 
 Blog, captions, scripts, ad copy sab likh deta hai.
 
