@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getPostBySlug } from '../lib/posts';
 import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { Helmet } from 'react-helmet-async';
 import { format } from 'date-fns';
 import { motion } from 'framer-motion';
@@ -63,7 +64,7 @@ export default function Post() {
         )}
 
         <div className="prose prose-lg dark:prose-invert prose-brand max-w-none">
-          <Markdown>{post.content}</Markdown>
+          <Markdown rehypePlugins={[rehypeRaw]}>{post.content}</Markdown>
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
