@@ -12,7 +12,7 @@ status: "published"
 
 # Canva AI Kya Hai? Canva AI Se Professional Design Kaise Banaye? (Complete Guide 2025)
 
-![Photo by Anmol Agarwal from Pexels](https://www.pexels.com/photo/brown-cow-grazing-in-indian-countryside-34587185/)
+![Photo by Anmol Agarwal from Pexels](https://images.pexels.com/photos/34587185/pexels-photo-34587185.jpeg)
 
 Introduction – Canva AI ne Design Industry Kaise Badal Di
 
