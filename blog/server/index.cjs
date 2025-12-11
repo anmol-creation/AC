@@ -164,7 +164,7 @@ app.get('/api/gallery/:folder', async (req, res) => {
   const { folder } = req.params;
   const ALLOWED_FOLDERS = ['sketches', 'photography', 'art']; // Whitelist for security
 
-  if (!ALLOWED_FOLDERS.includes(folder)) {
+  if (!ALLOWED_FOLDERS.includes(folder.toLowerCase())) {
     return res.status(403).json({ error: 'Access denied to this folder' });
   }
 
