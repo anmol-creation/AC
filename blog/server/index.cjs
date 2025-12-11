@@ -169,7 +169,7 @@ app.get('/api/gallery/:folder', async (req, res) => {
   }
 
   // Map simple folder names to Cloudinary paths if needed
-  const folderPath = folder === 'sketches' ? 'home/sketches' : folder;
+  const folderPath = folder;
 
   // If Cloudinary keys are missing, return mock data for development
   if (!process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
