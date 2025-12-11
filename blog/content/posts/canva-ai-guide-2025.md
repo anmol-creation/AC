@@ -12,8 +12,6 @@ status: "published"
 
 # Canva AI Kya Hai? Canva AI Se Professional Design Kaise Banaye? (Complete Guide 2025)
 
-![Photo by Anmol Agarwal from Pexels](https://images.pexels.com/photos/34587185/pexels-photo-34587185.jpeg)
-
 Introduction – Canva AI ne Design Industry Kaise Badal Di
 
 Aaj ke digital era me har business, creator aur student ko design ki zarurat hoti hai—thumbnail ho, logo ho, poster ho ya reel content. Lekin har koi professional designer nahi hota.
@@ -26,7 +24,7 @@ Canva AI aapka time bachata hai, design ko 10x zyada attractive banata hai aur b
 
 ---
 
-⭐ <h2>Canva AI Kya Hai?</h2>
+##  Canva AI Kya Hai? ##
 
 Canva AI ek advanced artificial intelligence based design system hai jo automatically:
 
@@ -48,12 +46,11 @@ Canva AI ka goal hai “Everyone can design anything” — bina professional sk
 
 ---
 
-🔥 <h2>Canva AI Ke Top Features (2025 Updated)</h2>
-
+### 🔥 Canva AI Ke Top Features (2025 Updated) ##
 
 ---
 
-<h3>1. Magic Write – AI Writer</h3>
+### 1. Magic Write – AI Writer ###
 
 Blog, captions, scripts, ad copy sab likh deta hai.
 
