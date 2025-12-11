@@ -183,23 +183,14 @@ app.get('/api/gallery/:folder', async (req, res) => {
   try {
       // 1. List resources from the specific folder
       // Note: Cloudinary Admin API has rate limits. For production with high traffic, cache this response.
-      // We look for 'authenticated' (private) images first as per user request.
-      let result;
-      try {
-          result = await cloudinary.api.resources({
-              type: 'authenticated',
-              prefix: folder + '/',
-              max_results: 50
-          });
-      } catch (e) {
-          // Fallback to 'upload' (public) if authenticated fetch fails or is empty/not used
-          console.log("Authenticated fetch failed or empty, trying public...", e.message);
-          result = await cloudinary.api.resources({
-              type: 'upload',
-              prefix: folder + '/',
-              max_results: 50
-          });
-      }
+
+      // Use resources_by_asset_folder to support Cloudinary's modern "Asset Folders" (Fixed Folders)
+      // where the folder name is not part of the public_id prefix.
+      const result = await cloudinary.api.resources_by_asset_folder(folder, {
+          max_results: 50,
+          tags: true,
+          context: true
+      });
 
       // 2. Transform URLs (Add Watermark + Sign URL for private access)
       const resources = result.resources.map(img => {
