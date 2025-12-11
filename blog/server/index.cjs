@@ -168,6 +168,9 @@ app.get('/api/gallery/:folder', async (req, res) => {
     return res.status(403).json({ error: 'Access denied to this folder' });
   }
 
+  // Map simple folder names to Cloudinary paths if needed
+  const folderPath = folder;
+
   // If Cloudinary keys are missing, return mock data for development
   if (!process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
       console.warn("Cloudinary keys missing. Serving mock data.");
@@ -186,7 +189,7 @@ app.get('/api/gallery/:folder', async (req, res) => {
 
       // Use resources_by_asset_folder to support Cloudinary's modern "Asset Folders" (Fixed Folders)
       // where the folder name is not part of the public_id prefix.
-      const result = await cloudinary.api.resources_by_asset_folder(folder, {
+      const result = await cloudinary.api.resources_by_asset_folder(folderPath, {
           max_results: 50,
           tags: true,
           context: true

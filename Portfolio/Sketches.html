@@ -16,10 +16,20 @@
             <p class="gallery-subtitle">A collection of my hand-drawn artwork and creative explorations.</p>
         </header>
 
-        <div id="loader" class="loader">Loading Gallery...</div>
+        <!-- Loader is hidden by default if static content exists, but we can keep it for fallback if needed.
+             However, for static site, we assume content is there. -->
+        <div id="loader" class="loader" style="display: none;">Loading Gallery...</div>
 
         <div id="gallery-grid" class="gallery-grid">
-            <!-- Images will be injected here by JS -->
+            <!-- GALLERY_START -->
+
+            <div class="gallery-item" style="animation-delay: 0.0s" onclick="openLightbox('https://res.cloudinary.com/daxgt0qfj/image/upload/s--LH7UXwcI--/c_limit,w_1000/co_white,g_center,l_text:Arial_60:%C2%A9%20Anmol%20Creations,o_50/IMG_20230929_090438_488_ji1cup?_a=BAMAMihK0')">
+                <img src="https://res.cloudinary.com/daxgt0qfj/image/upload/s--LH7UXwcI--/c_limit,w_1000/co_white,g_center,l_text:Arial_60:%C2%A9%20Anmol%20Creations,o_50/IMG_20230929_090438_488_ji1cup?_a=BAMAMihK0" alt="Sketch" loading="lazy">
+                <div class="gallery-caption">
+                    <span>View Artwork</span>
+                </div>
+            </div>
+<!-- GALLERY_END -->
         </div>
     </div>
 
@@ -30,60 +40,14 @@
     </div>
 
     <script>
-        const API_URL = 'http://localhost:3001/api/gallery/Sketches'; // Dev
-        // In production, this should point to your live domain or relative path if proxy configured
-
-        const galleryGrid = document.getElementById('gallery-grid');
-        const loader = document.getElementById('loader');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxClose = document.querySelector('.lightbox-close');
 
-        // Fetch Images
-        async function loadGallery() {
-            try {
-                // Determine API URL based on environment
-                // If we are on localhost, use localhost:3001
-                // If served statically, we might need a different strategy or CORS config
-                // For now, assuming local development setup
-                const response = await fetch(API_URL);
-
-                if (!response.ok) throw new Error('Failed to load images');
-
-                const images = await response.json();
-
-                loader.style.display = 'none';
-
-                if (images.length === 0) {
-                    galleryGrid.innerHTML = '<p style="text-align:center; width:100%;">No sketches found.</p>';
-                    return;
-                }
-
-                images.forEach((img, index) => {
-                    const item = document.createElement('div');
-                    item.className = 'gallery-item';
-                    item.style.animationDelay = `${index * 0.1}s`; // Staggered animation
-
-                    item.innerHTML = `
-                        <img src="${img.url}" alt="Sketch ${index + 1}" loading="lazy">
-                        <div class="gallery-caption">
-                            <span>View Artwork</span>
-                        </div>
-                    `;
-
-                    // Lightbox Click
-                    item.addEventListener('click', () => {
-                        lightboxImg.src = img.url;
-                        lightbox.classList.add('active');
-                    });
-
-                    galleryGrid.appendChild(item);
-                });
-
-            } catch (error) {
-                console.error(error);
-                loader.textContent = 'Could not load gallery. Please try again later.';
-            }
+        // Global function for static HTML onclick
+        window.openLightbox = function(url) {
+            lightboxImg.src = url;
+            lightbox.classList.add('active');
         }
 
         // Lightbox Logic
@@ -98,9 +62,6 @@
                 lightboxImg.src = '';
             }
         });
-
-        // Initialize
-        loadGallery();
     </script>
 </body>
 </html>

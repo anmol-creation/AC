@@ -29,6 +29,9 @@ git pull
 echo "Building the blog..."
 cd blog
 npm run build
+# Generate static gallery for Sketches
+echo "Generating static gallery..."
+node scripts/generate-gallery.cjs
 cd ..
 
 # 3. Add changes
