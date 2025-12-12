@@ -1,11 +1,11 @@
 ---
 title: "Canva AI Kya Hai? Canva AI Se Professional Design Kaise Banaye? (Complete Guide 2025)"
 slug: "canva-ai-guide-2025"
-author: "Admin"
+author: "Anmol Agarwal"
 date: "2025-01-01"
 category: "Design"
 excerpt: "Learn how to use Canva AI to create professional designs effortlessly. A complete guide for 2025."
-image: ""
+image: "https://images.unsplash.com/photo-1730890802243-ed276ffebb79?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FudmF8ZW58MHx8MHx8fDA%3D"
 tags: ["Canva", "AI", "Design", "Tutorial"]
 status: "published"
 ---
