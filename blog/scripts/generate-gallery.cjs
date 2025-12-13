@@ -8,6 +8,17 @@ const fs = require('fs');
 const path = require('path');
 const cloudinary = require('cloudinary').v2;
 
+// Validation Check
+if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+    console.error('\n\x1b[31m%s\x1b[0m', 'ERROR: Cloudinary credentials are missing.');
+    console.error('Please ensure you have a .env file in the "blog/" directory or the root directory with the following keys:');
+    console.error(' - CLOUDINARY_CLOUD_NAME');
+    console.error(' - CLOUDINARY_API_KEY');
+    console.error(' - CLOUDINARY_API_SECRET');
+    console.error('\nSee blog/.env.example for a template.\n');
+    process.exit(1);
+}
+
 // Cloudinary Config
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -21,10 +32,6 @@ async function generateGallery() {
     console.log('Generating Static Gallery for Sketches...');
 
     try {
-        if (!process.env.CLOUDINARY_API_SECRET) {
-            console.warn('WARNING: CLOUDINARY_API_SECRET is missing. Generated signed URLs will be invalid.');
-        }
-
         const folder = 'sketches';
 
         // 1. Fetch images from Cloudinary
