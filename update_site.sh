@@ -28,6 +28,13 @@ git pull
 # 2. Build the blog
 echo "Building the blog..."
 cd blog
+
+# Check for node_modules and install if missing
+if [ ! -d "node_modules" ]; then
+    echo "Dependencies not found. Installing (this may take a while)..."
+    npm install
+fi
+
 npm run build
 # Generate static gallery for Sketches
 echo "Generating static gallery..."
