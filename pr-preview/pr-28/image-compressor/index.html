@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3565X5KNFD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3565X5KNFD');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor & Resizer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-glow"></div>
+
+    <div class="main-container">
+
+        <!-- Left Side: Controls -->
+        <div class="controls-panel glass-panel">
+            <h1 class="app-title">Image <span class="highlight">Studio</span></h1>
+
+            <!-- Upload Section -->
+            <div class="upload-area" id="drop-zone">
+                <input type="file" id="file-input" accept="image/*" multiple hidden>
+                <div class="upload-content">
+                    <div class="upload-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <p>Drag & Drop or <span class="browse-btn">Browse</span></p>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="settings-group" id="settings-panel">
+
+                <!-- Format Selection -->
+                <div class="control-group">
+                    <label>Output Format</label>
+                    <div class="format-options">
+                        <button class="format-btn active" data-format="image/jpeg">JPG</button>
+                        <button class="format-btn" data-format="image/png">PNG</button>
+                        <button class="format-btn" data-format="image/webp">WEBP</button>
+                    </div>
+                </div>
+
+                <!-- Quality Slider -->
+                <div class="control-group">
+                    <div class="label-row">
+                        <label>Quality</label>
+                        <span id="quality-value">80%</span>
+                    </div>
+                    <input type="range" id="quality-slider" min="1" max="100" value="80">
+                </div>
+
+                <!-- Resize Options -->
+                <div class="control-group">
+                    <div class="label-row">
+                        <label>Resize</label>
+                        <div class="toggle-wrapper">
+                            <span>Lock Aspect Ratio</span>
+                            <label class="switch">
+                                <input type="checkbox" id="aspect-ratio-lock" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="resize-inputs">
+                        <div class="input-wrap">
+                            <input type="number" id="width-input" placeholder="Width">
+                            <span>px</span>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="number" id="height-input" placeholder="Height">
+                            <span>px</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <button id="process-btn" class="action-btn neon-btn">
+                    Process Images
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Side: Preview -->
+        <div class="preview-panel glass-panel">
+            <div class="preview-header">
+                <h2>Preview</h2>
+                <button id="download-all-btn" class="download-all-btn hidden">Download All</button>
+            </div>
+
+            <div class="preview-container" id="preview-container">
+                <div class="empty-state">
+                    <p>No image selected</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
