@@ -21,6 +21,10 @@ async function generateGallery() {
     console.log('Generating Static Gallery for Sketches...');
 
     try {
+        if (!process.env.CLOUDINARY_API_SECRET) {
+            console.warn('WARNING: CLOUDINARY_API_SECRET is missing. Generated signed URLs will be invalid.');
+        }
+
         const folder = 'sketches';
 
         // 1. Fetch images from Cloudinary
@@ -44,6 +48,7 @@ async function generateGallery() {
             const watermarkedUrl = cloudinary.url(img.public_id, {
                  type: img.type,
                  sign_url: true,
+                 version: img.version,
                  transformation: [
                      { width: 1000, crop: "limit" },
                      { overlay: { font_family: "Arial", font_size: 60, text: "© Anmol Creations" }, color: "white", opacity: 50, gravity: "center" }

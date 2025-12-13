@@ -200,6 +200,7 @@ app.get('/api/gallery/:folder', async (req, res) => {
           const watermarkedUrl = cloudinary.url(img.public_id, {
                type: img.type, // 'authenticated' or 'upload'
                sign_url: true, // Generate signed URL for authenticated images
+               version: img.version,
                transformation: [
                    { width: 1000, crop: "limit" },
                    { overlay: { font_family: "Arial", font_size: 60, text: "© Anmol Creations" }, color: "white", opacity: 50, gravity: "center" }
