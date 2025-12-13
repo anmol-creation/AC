@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketches Gallery | Anmol Creations</title>
+    <link rel="stylesheet" href="../assets/css/gallery.css">
+</head>
+<body>
+
+    <div class="gallery-container">
+        <a href="../Portfolio.html" class="back-link">← Back to Portfolio</a>
+
+        <header class="gallery-header">
+            <h1 class="gallery-title">Sketches</h1>
+            <p class="gallery-subtitle">A collection of my hand-drawn artwork and creative explorations.</p>
+        </header>
+
+        <!-- Loader is hidden by default if static content exists, but we can keep it for fallback if needed.
+             However, for static site, we assume content is there. -->
+        <div id="loader" class="loader" style="display: none;">Loading Gallery...</div>
+
+        <div id="gallery-grid" class="gallery-grid">
+            <!-- GALLERY_START -->
+
+            <div class="gallery-item" style="animation-delay: 0.0s" onclick="openLightbox('https://res.cloudinary.com/daxgt0qfj/image/upload/s--LH7UXwcI--/c_limit,w_1000/co_white,g_center,l_text:Arial_60:%C2%A9%20Anmol%20Creations,o_50/IMG_20230929_090438_488_ji1cup?_a=BAMAMihK0')">
+                <img src="https://res.cloudinary.com/daxgt0qfj/image/upload/s--LH7UXwcI--/c_limit,w_1000/co_white,g_center,l_text:Arial_60:%C2%A9%20Anmol%20Creations,o_50/IMG_20230929_090438_488_ji1cup?_a=BAMAMihK0" alt="Sketch" loading="lazy">
+                <div class="gallery-caption">
+                    <span>View Artwork</span>
+                </div>
+            </div>
+<!-- GALLERY_END -->
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img id="lightbox-img" src="" alt="Full view">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        // Global function for static HTML onclick
+        window.openLightbox = function(url) {
+            lightboxImg.src = url;
+            lightbox.classList.add('active');
+        }
+
+        // Lightbox Logic
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+            }
+        });
+    </script>
+</body>
+</html>
