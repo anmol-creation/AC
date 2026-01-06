@@ -1,0 +1,104 @@
+/* Scoped styles for the Hero Section */
+/* Isolation: All styles prefixed with #hero-container or specific classes to avoid conflicts */
+
+#hero-container {
+    position: relative;
+    width: 100%;
+    min-height: 80vh; /* Premium height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--bg-color, #111111); /* Fallback to dark if var missing */
+    transition: background-color 0.3s ease;
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Behind content */
+    pointer-events: none; /* Allow clicks to pass through if needed, though no interactions defined */
+}
+
+#hero-container .hero-content {
+    position: relative;
+    z-index: 2; /* Above canvas */
+    text-align: center;
+    padding: 0 1rem;
+    pointer-events: none; /* Let clicks pass through text areas unless interaction is added */
+}
+
+/* Brand Name */
+#hero-container .hero-brand-name {
+    font-family: var(--font-family, sans-serif);
+    font-size: 3rem; /* Large but not shouting */
+    font-weight: 700;
+    color: var(--brand-title-color, #ffffff); /* Strict rule: Brand title always white */
+    letter-spacing: -0.03em;
+    opacity: 0; /* Hidden initially for reveal */
+    transform: translateY(10px);
+    margin-bottom: 1rem;
+    pointer-events: auto; /* Allow text selection */
+
+    /* Reveal animation handled by JS/CSS class */
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+#hero-container .hero-brand-name.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tagline */
+#hero-container .hero-tagline {
+    font-family: var(--font-family, sans-serif);
+    font-size: 1.125rem;
+    color: var(--text-secondary, #a1a1a1); /* Subtle color */
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(10px);
+
+    /* Sentence case only */
+    text-transform: none;
+
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+    transition-delay: 0.8s; /* Delay after brand name */
+}
+
+#hero-container .hero-tagline.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #hero-container {
+        min-height: 60vh;
+    }
+
+    #hero-container .hero-brand-name {
+        font-size: 2rem;
+    }
+
+    #hero-container .hero-tagline {
+        font-size: 1rem;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #hero-canvas {
+        display: none; /* Disable animation */
+    }
+
+    #hero-container .hero-brand-name,
+    #hero-container .hero-tagline {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}
