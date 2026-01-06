@@ -6,6 +6,7 @@
     <title>anmolcreations</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="hero/hero.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -23,28 +24,41 @@
 <body>
     <header class="header">
         <div class="container header-content">
-            <a href="#" class="brand-logo">anmolcreations</a>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            </button>
+            <a href="#" class="brand-logo">.ac</a>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
         </div>
+        <nav id="main-nav" class="main-nav">
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="solutions.html">Online Solutions</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="#products">Products</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1 class="brand-name">anmolcreations</h1>
-                <p class="hero-subtitle">Explore My Creativity</p>
-                <div class="cta-buttons">
-                    <a href="solutions.html" class="btn btn-primary">Online Solutions</a>
-                    <a href="portfolio.html" class="btn btn-secondary">Portfolio</a>
-                    <a href="#products" class="btn btn-secondary">Products</a>
-                </div>
+        <div class="hero-container" id="hero-container" aria-label="Animated background representing skills connecting into ideas and creations">
+            <canvas id="hero-canvas"></canvas>
+            <div class="hero-content">
+                <h1 class="hero-brand-name">anmolcreations</h1>
+                <p class="hero-tagline">A space where my skills evolve into ideas and creations.</p>
             </div>
-        </section>
+        </div>
 
         <section class="description-section">
+            <div class="container">
+                <p class="hero-subtitle" style="text-align: center; margin-bottom: 2rem; color: var(--text-secondary);">Explore My Creativity</p>
+            </div>
             <div class="container">
                 <p class="brand-description">
                     anmolcreations is a brand showcase hub for my projects,
@@ -112,5 +126,6 @@
 
     <script src="js/theme.js"></script>
     <script src="js/home.js"></script>
+    <script src="hero/hero.js"></script>
 </body>
 </html>

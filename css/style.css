@@ -92,6 +92,75 @@ a {
     background-color: rgba(128, 128, 128, 0.1);
 }
 
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Menu Toggle */
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-main);
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-toggle:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* Mobile Nav Overlay/Accordion */
+.main-nav {
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-nav.active {
+    display: block;
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-list {
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+.nav-list li {
+    margin-bottom: 0.5rem;
+}
+
+.nav-list li:last-child {
+    margin-bottom: 0;
+}
+
+.nav-list a {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.nav-list a:hover {
+    color: var(--text-main);
+}
+
 .icon-sun {
     display: none;
 }
