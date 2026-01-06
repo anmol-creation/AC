@@ -4,12 +4,12 @@
 #hero-container {
     position: relative;
     width: 100%;
-    min-height: 80vh; /* Premium height */
+    min-height: 60vh; /* Standard height */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: var(--bg-color, #111111); /* Fallback to dark if var missing */
+    background-color: #111111; /* Always dark */
     transition: background-color 0.3s ease;
 }
 

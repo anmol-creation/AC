@@ -148,10 +148,25 @@
     }
 }
 /* Header override for Homepage (Dark Hero Background) */
-.header .brand-logo {
+/* Force header to behave as if it's on a dark background regardless of theme */
+.header {
+    background-color: #111111; /* Ensure header background is dark */
+}
+
+.header .brand-logo,
+.header .theme-toggle,
+.header .menu-toggle {
     color: #ffffff !important;
 }
 
-.header .theme-toggle {
-    color: #ffffff !important;
+/* Coming Soon Cards */
+.card.coming-soon {
+    opacity: 0.6;
+    cursor: default;
+    pointer-events: none; /* Disable interactions */
+}
+
+.card.coming-soon:hover {
+    box-shadow: none;
+    border-color: var(--border-color);
 }
