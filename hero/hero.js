@@ -1,5 +1,4 @@
 (function() {
-    // Isolated Hero Logic
     const container = document.getElementById('hero-container');
     const canvas = document.getElementById('hero-canvas');
     if (!container || !canvas) return;
@@ -8,77 +7,50 @@
     const brandName = container.querySelector('.hero-brand-name');
     const tagline = container.querySelector('.hero-tagline');
 
-    // Configuration
-    const CONFIG = {
-        dotCount: 20, // Increased from 15 as requested
-        speed: 0.5, // Slightly faster for visual interest during connection
-        connectionSpeed: 0.08, // Speed of line drawing
-        colors: [
-            '#ffffff', // Core white
-            '#ff69b4', // Pink
-            '#3b82f6', // Blue
-            '#06b6d4', // Cyan
-            '#8b5cf6'  // Violet
-        ]
-    };
+    // Muted Color Palette
+    // Core white: #ffffff
+    // Soft Blue: #60a5fa
+    // Cyan: #22d3ee
+    // Pink: #f472b6
+    // Purple: #a78bfa
+    // Teal: #2dd4bf
+    const COLORS = ['#ffffff', '#60a5fa', '#22d3ee', '#f472b6', '#a78bfa', '#2dd4bf'];
+    const DOT_COUNT = 20;
 
     let width, height;
     let dots = [];
     let animationFrameId;
-    let isConnected = false;
-    let currentConnectionIndex = 0;
-    let lineDrawProgress = 0; // 0 to 1 for the current line
-    let revealTriggered = false;
+    let phase = 'float'; // float, connect, unify, idle
+    let phaseTimer = 0;
 
-    // Prefer reduced motion check
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Animation Phases Duration (frames approx 60fps)
+    const PHASES = {
+        FLOAT: 120,    // 2 seconds float
+        CONNECT: 300,  // 5 seconds connecting
+        UNIFY: 180,    // 3 seconds fading to white
+        IDLE: -1       // Indefinite
+    };
 
-    // Intersection Observer to pause animation when off-screen
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (!animationFrameId && !prefersReducedMotion) {
-                    animate();
-                }
-            } else {
-                if (animationFrameId) {
-                    cancelAnimationFrame(animationFrameId);
-                    animationFrameId = null;
-                }
-            }
-        });
-    }, { threshold: 0.1 });
-
-    observer.observe(container);
-
-    // Resize Handler
-    function resize() {
-        width = container.clientWidth;
-        height = container.clientHeight;
-        canvas.width = width;
-        canvas.height = height;
-        initDots();
-    }
-
-    // Dot Class
     class Dot {
-        constructor() {
+        constructor(isFirst) {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * CONFIG.speed;
-            this.vy = (Math.random() - 0.5) * CONFIG.speed;
-            this.radius = 2.5;
-
-            // Random color from palette
-            this.color = CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
+            // Slow idle motion
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = (Math.random() - 0.5) * 0.3;
+            this.radius = 2 + Math.random(); // 2-3px
+            this.baseColor = isFirst ? '#ffffff' : COLORS[Math.floor(Math.random() * (COLORS.length - 1)) + 1];
+            this.color = this.baseColor;
+            this.alpha = 1;
+            // Target for unification
+            this.targetColor = '#ffffff';
         }
 
         update() {
-            // Keep moving slowly
             this.x += this.vx;
             this.y += this.vy;
 
-            // Bounce off edges
+            // Soft bounce
             if (this.x < 0 || this.x > width) this.vx *= -1;
             if (this.y < 0 || this.y > height) this.vy *= -1;
         }
@@ -91,90 +63,132 @@
         }
     }
 
-    function initDots() {
+    function init() {
+        resize();
         dots = [];
-        for (let i = 0; i < CONFIG.dotCount; i++) {
-            dots.push(new Dot());
+        for (let i = 0; i < DOT_COUNT; i++) {
+            dots.push(new Dot(i === 0));
         }
-        // Sort dots to create a somewhat logical path (e.g., left to right)
-        // to make the sequential connection look cleaner
-        dots.sort((a, b) => a.x - b.x);
+        window.addEventListener('resize', resize);
+        animate();
     }
 
-    function drawSequentialLines() {
-        // Draw all fully connected lines
-        for (let i = 0; i < currentConnectionIndex; i++) {
-            if (i + 1 < dots.length) {
-                const start = dots[i];
-                const end = dots[i + 1];
-
-                ctx.beginPath();
-                ctx.moveTo(start.x, start.y);
-                ctx.lineTo(end.x, end.y);
-                ctx.strokeStyle = `rgba(255, 255, 255, 0.3)`; // Faint white connection
-                ctx.lineWidth = 1;
-                ctx.stroke();
-            }
-        }
-
-        // Draw current animating line
-        if (currentConnectionIndex < dots.length - 1) {
-            const start = dots[currentConnectionIndex];
-            const end = dots[currentConnectionIndex + 1];
-
-            const currentX = start.x + (end.x - start.x) * lineDrawProgress;
-            const currentY = start.y + (end.y - start.y) * lineDrawProgress;
-
-            ctx.beginPath();
-            ctx.moveTo(start.x, start.y);
-            ctx.lineTo(currentX, currentY);
-            ctx.strokeStyle = `rgba(255, 255, 255, 0.6)`; // Brighter leading line
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
-
-            // Advance progress
-            lineDrawProgress += CONFIG.connectionSpeed;
-            if (lineDrawProgress >= 1) {
-                lineDrawProgress = 0;
-                currentConnectionIndex++;
-            }
-        } else {
-            // All connections done
-            if (!revealTriggered) {
-                revealContent();
-                revealTriggered = true;
-            }
-        }
+    function resize() {
+        width = container.clientWidth;
+        height = container.clientHeight;
+        canvas.width = width;
+        canvas.height = height;
     }
 
-    function revealContent() {
-        if (brandName) brandName.classList.add('visible');
-        setTimeout(() => {
-            if (tagline) tagline.classList.add('visible');
-        }, 1000);
+    // Helper to interpolate colors
+    function lerpColor(a, b, amount) {
+        // Simple hex lerp or just keeping it simple for now as we transition to white
+        // Since we only transition to white, we can just use white with opacity overlay or simpler logic.
+        // But let's assume strict colors.
+        // For simplicity in this env, we will just switch to white when unify completes or use opacity.
+        // Let's implement a simple RGB lerp if needed, but fading to white is visually clean.
+        return b;
     }
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
 
+        // Update Phase
+        if (phase !== 'idle') {
+            phaseTimer++;
+            if (phase === 'float' && phaseTimer > PHASES.FLOAT) {
+                phase = 'connect';
+                phaseTimer = 0;
+            } else if (phase === 'connect' && phaseTimer > PHASES.CONNECT) {
+                phase = 'unify';
+                phaseTimer = 0;
+            } else if (phase === 'unify' && phaseTimer > PHASES.UNIFY) {
+                phase = 'idle';
+                revealContent();
+            }
+        }
+
+        // Draw Dots
         dots.forEach(dot => {
             dot.update();
+
+            // Handle Color Unification
+            if (phase === 'unify') {
+                // Determine progress 0 to 1
+                let progress = phaseTimer / PHASES.UNIFY;
+                // Visually we want them to become white.
+                // We can overlay white with alpha or change property.
+                // Here we just set color to white at end.
+                if (progress > 0.9) dot.color = '#ffffff';
+            }
+
             dot.draw(ctx);
         });
 
-        drawSequentialLines();
+        // Draw Connections
+        // Logic: "Connect rarely", "Floating primary"
+        // Only connect if very close.
+        if (phase === 'connect' || phase === 'unify' || phase === 'idle') {
+            let maxDist = 100; // Short distance
+            if (phase === 'connect') maxDist = 150; // Slightly more eager during connect phase
+
+            for (let i = 0; i < dots.length; i++) {
+                for (let j = i + 1; j < dots.length; j++) {
+                    const dx = dots[i].x - dots[j].x;
+                    const dy = dots[i].y - dots[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+
+                    if (dist < maxDist) {
+                        // Rare connection: random chance or strict distance?
+                        // Strict distance is better for stability.
+                        // "Rarely" implies small maxDist relative to screen.
+
+                        let alpha = 1 - (dist / maxDist);
+                        // Fade in/out based on phase
+                        if (phase === 'connect') {
+                             // Gradual appear
+                             alpha *= Math.min(1, phaseTimer / 60);
+                        } else if (phase === 'unify') {
+                             // Fade to white means stroke becomes white
+                             ctx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.5})`;
+                        } else if (phase === 'idle') {
+                             // Calm, faint
+                             alpha *= 0.3;
+                             ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                        }
+
+                        if (phase !== 'unify' && phase !== 'idle') {
+                            // Use dot color mix? Or soft glow.
+                            // Prompt: "Soft glow", "Lines: Thin (0.5-1px)"
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha * 0.4})`;
+                        }
+
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(dots[i].x, dots[i].y);
+                        ctx.lineTo(dots[j].x, dots[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
 
         animationFrameId = requestAnimationFrame(animate);
     }
 
-    // Initialization
-    if (!prefersReducedMotion) {
-        window.addEventListener('resize', resize);
-        resize(); // Initial setup
-        // Animation loop is triggered by Observer
-    } else {
-        // Immediate reveal for reduced motion
-        revealContent();
+    function revealContent() {
+        if (brandName) brandName.classList.add('visible');
+        if (tagline) {
+             // Tagline appears after brand name
+            tagline.classList.add('visible');
+        }
     }
 
+    // Prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        revealContent();
+    } else {
+        init();
+    }
 })();

@@ -1,122 +1,135 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>anmolcreations</title>
+    <title>anmolcreations (.ac)</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="hero/hero.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
-    <!-- Google tracking code -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3565X5KNFD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-3565X5KNFD');
-    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+
     <header class="header">
-        <div class="container header-content">
-            <a href="#" class="brand-logo">.ac</a>
-            <div class="header-actions">
-                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                </button>
-                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </button>
-            </div>
-        </div>
-        <nav id="main-nav" class="main-nav">
-            <div class="container">
-                <ul class="nav-list">
-                    <li><a href="solutions.html">Online Solutions</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="#products">Products</a></li>
-                </ul>
-            </div>
-        </nav>
+        <a href="#" class="brand-logo">.ac</a>
     </header>
 
     <main>
-        <div class="hero-container" id="hero-container" aria-label="Animated background representing skills connecting into ideas and creations">
-            <canvas id="hero-canvas"></canvas>
-            <div class="hero-content">
-                <h1 class="hero-brand-name">anmolcreations</h1>
-                <p class="hero-tagline">A space where my skills evolve into ideas and creations.</p>
+        <!-- Hero Section -->
+        <div id="hero-wrapper">
+             <!-- Dynamically loaded or included structure -->
+             <div class="hero-container" id="hero-container" aria-label="Animated background">
+                <canvas id="hero-canvas"></canvas>
+                <div class="hero-content">
+                    <h1 class="hero-brand-name">anmolcreations</h1>
+                    <p class="hero-tagline">A space where my skills evolve into ideas and creations.</p>
+                </div>
             </div>
         </div>
 
-        <section class="description-section">
+        <!-- Section 1: Online Digital Solutions -->
+        <section class="cards-section">
             <div class="container">
-                <p class="hero-subtitle" style="text-align: center; margin-bottom: 2rem; color: var(--text-secondary);">Explore My Creativity</p>
-            </div>
-            <div class="container">
-                <p class="brand-description">
-                    anmolcreations is a brand showcase hub for my projects,
-                    work, and experiments — each built as an independent product.
-                </p>
-            </div>
-        </section>
+                <div class="card">
+                    <h2 class="card-title">Online Digital Solutions</h2>
+                    <p class="card-description">Helping people access essential online services with ease.</p>
 
-        <section class="cards-section" id="products">
-            <div class="container">
-                <div class="cards-grid">
-                    <!-- Portfolio Card -->
-                    <a href="https://anmol-creation.github.io/portfolio/" class="card" id="portfolio">
-                        <h2 class="card-title">Portfolio</h2>
-                        <p class="card-description">A showcase of my skills, projects, and creative work.</p>
-                        <span class="card-link">Explore now</span>
-                    </a>
+                    <div class="sub-card-grid">
+                        <!-- Sub-Card: Internet Services -->
+                        <div class="sub-card">
+                            <h3 class="sub-card-title">Internet Services</h3>
+                            <p class="card-description" style="margin-bottom: 1rem;">Essential online services for daily and official needs.</p>
+                            <div class="icon-grid">
+                                <div class="icon-item"><i data-lucide="landmark"></i> Banking</div>
+                                <div class="icon-item"><i data-lucide="building-2"></i> Gov</div>
+                                <div class="icon-item"><i data-lucide="graduation-cap"></i> Student</div>
+                                <div class="icon-item"><i data-lucide="briefcase"></i> Business</div>
+                            </div>
+                        </div>
 
-                    <!-- PromptOEngine Card -->
-                    <a href="https://anmol-creation.github.io/promptoengine/pages/home/home.html" class="card">
-                        <h2 class="card-title">PromptOEngine</h2>
-                        <p class="card-description">An AI prompt system designed to solve real prompting problems.</p>
-                    </a>
+                        <!-- Sub-Card: Design Studio -->
+                        <div class="sub-card">
+                            <h3 class="sub-card-title">Design Studio</h3>
+                            <p class="card-description" style="margin-bottom: 1rem;">Design services for branding and visual needs.</p>
+                            <div class="icon-grid">
+                                <div class="icon-item"><i data-lucide="pen-tool"></i> Branding</div>
+                                <div class="icon-item"><i data-lucide="hexagon"></i> Logo</div>
+                                <div class="icon-item"><i data-lucide="palette"></i> Design</div>
+                                <div class="icon-item"><i data-lucide="lightbulb"></i> Creative</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="cards-section" id="additional-projects">
+        <!-- Section 2: Portfolio -->
+        <section class="cards-section">
+            <div class="container">
+                <a href="https://anmol-creation.github.io/portfolio/" class="card" style="display: block;">
+                    <h2 class="card-title">Portfolio</h2>
+                    <p class="card-description">A collection of selected creative and digital work.</p>
+                    <div class="icon-grid">
+                        <div class="icon-item"><i data-lucide="brush"></i> Art</div>
+                        <div class="icon-item"><i data-lucide="camera"></i> Photography</div>
+                        <div class="icon-item"><i data-lucide="video"></i> Videography</div>
+                        <div class="icon-item"><i data-lucide="film"></i> Editing</div>
+                        <div class="icon-item"><i data-lucide="layout"></i> Designing</div>
+                        <div class="icon-item"><i data-lucide="code"></i> Coding</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 3 & 4: PromtoEngine & UT.ac -->
+        <section class="cards-section">
             <div class="container">
                 <div class="cards-grid">
+                    <!-- PromtoEngine -->
+                    <a href="https://anmol-creation.github.io/promptoengine/pages/home/home.html" class="card">
+                        <h2 class="card-title">PromtoEngine</h2>
+                        <p class="card-description">An AI prompt tool for creative and technical use.</p>
+                        <div class="icon-grid">
+                            <div class="icon-item"><i data-lucide="terminal"></i> Prompt</div>
+                            <div class="icon-item"><i data-lucide="image"></i> Image AI</div>
+                            <div class="icon-item"><i data-lucide="message-square"></i> Text AI</div>
+                            <div class="icon-item"><i data-lucide="film"></i> Video AI</div>
+                        </div>
+                    </a>
+
                     <!-- UT.ac -->
                     <a href="https://anmol-creation.github.io/ut/" class="card">
                         <h2 class="card-title">UT.ac</h2>
-                        <p class="card-description">Tools for real problems.</p>
-                        <span class="card-link">Explore now</span>
+                        <p class="card-description">Free utility tools for everyday digital tasks.</p>
+                        <div class="icon-grid">
+                            <div class="icon-item"><i data-lucide="type"></i> Text Tools</div>
+                            <div class="icon-item"><i data-lucide="arrow-right-left"></i> Converter</div>
+                            <div class="icon-item"><i data-lucide="calculator"></i> Calculator</div>
+                            <div class="icon-item"><i data-lucide="wrench"></i> Utilities</div>
+                        </div>
                     </a>
-
-                    <!-- Project Blog -->
-                    <div class="card coming-soon">
-                        <h2 class="card-title">Project Blog</h2>
-                        <p class="card-description">Coming Soon</p>
-                    </div>
-
-                    <!-- Project RC -->
-                    <div class="card coming-soon">
-                        <h2 class="card-title">Project RC</h2>
-                        <p class="card-description">Coming Soon</p>
-                    </div>
-
-                    <!-- Project CR -->
-                    <div class="card coming-soon">
-                        <h2 class="card-title">Project CR</h2>
-                        <p class="card-description">Coming Soon</p>
-                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Section 5: Upcoming -->
+        <section class="cards-section">
+            <div class="container">
+                <div class="cards-grid">
+                    <div class="card">
+                        <h2 class="card-title">Project RC</h2>
+                        <span class="status-badge">[ In Progress ]</span>
+                    </div>
+                    <!-- Add more upcoming here if needed -->
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer">
@@ -125,8 +138,9 @@
         </div>
     </footer>
 
-    <script src="js/theme.js"></script>
-    <script src="js/home.js"></script>
     <script src="hero/hero.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
