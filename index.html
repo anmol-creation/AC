@@ -16,7 +16,27 @@
 <body>
 
     <header class="header">
-        <a href="#" class="brand-logo">.ac</a>
+        <div class="container header-content" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="#" class="brand-logo">.ac</a>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+        <nav id="main-nav" class="main-nav">
+            <div class="container">
+                <ul class="nav-list">
+                    <li><a href="solutions.html">Online Solutions</a></li>
+                    <li><a href="https://anmol-creation.github.io/portfolio/">Portfolio</a></li>
+                    <li><a href="#products">Products</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <main>
@@ -35,13 +55,13 @@
         <!-- Section 1: Online Digital Solutions -->
         <section class="cards-section">
             <div class="container">
-                <div class="card">
+                <a href="solutions.html" class="card" id="card-solutions">
                     <h2 class="card-title">Online Digital Solutions</h2>
                     <p class="card-description">Helping people access essential online services with ease.</p>
 
                     <div class="sub-card-grid">
                         <!-- Sub-Card: Internet Services -->
-                        <div class="sub-card">
+                        <div class="sub-card sub-card-internet">
                             <h3 class="sub-card-title">Internet Services</h3>
                             <p class="card-description" style="margin-bottom: 1rem;">Essential online services for daily and official needs.</p>
                             <div class="icon-grid">
@@ -53,7 +73,7 @@
                         </div>
 
                         <!-- Sub-Card: Design Studio -->
-                        <div class="sub-card">
+                        <div class="sub-card sub-card-design">
                             <h3 class="sub-card-title">Design Studio</h3>
                             <p class="card-description" style="margin-bottom: 1rem;">Design services for branding and visual needs.</p>
                             <div class="icon-grid">
@@ -64,14 +84,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
 
         <!-- Section 2: Portfolio -->
         <section class="cards-section">
             <div class="container">
-                <a href="https://anmol-creation.github.io/portfolio/" class="card" style="display: block;">
+                <a href="https://anmol-creation.github.io/portfolio/" class="card card-portfolio" style="display: block;">
                     <h2 class="card-title">Portfolio</h2>
                     <p class="card-description">A collection of selected creative and digital work.</p>
                     <div class="icon-grid">
@@ -91,7 +111,7 @@
             <div class="container">
                 <div class="cards-grid">
                     <!-- PromtoEngine -->
-                    <a href="https://anmol-creation.github.io/promptoengine/pages/home/home.html" class="card">
+                    <a href="https://anmol-creation.github.io/promptoengine/pages/home/home.html" class="card card-promto">
                         <h2 class="card-title">PromtoEngine</h2>
                         <p class="card-description">An AI prompt tool for creative and technical use.</p>
                         <div class="icon-grid">
@@ -103,7 +123,7 @@
                     </a>
 
                     <!-- UT.ac -->
-                    <a href="https://anmol-creation.github.io/ut/" class="card">
+                    <a href="https://anmol-creation.github.io/ut/" class="card card-ut">
                         <h2 class="card-title">UT.ac</h2>
                         <p class="card-description">Free utility tools for everyday digital tasks.</p>
                         <div class="icon-grid">
@@ -118,14 +138,26 @@
         </section>
 
         <!-- Section 5: Upcoming -->
-        <section class="cards-section">
+        <section class="cards-section" id="upcoming-section">
             <div class="container">
+                <h2 class="section-title">Upcoming</h2>
                 <div class="cards-grid">
-                    <div class="card">
-                        <h2 class="card-title">Project RC</h2>
-                        <span class="status-badge">[ In Progress ]</span>
+                    <div class="card card-disabled">
+                        <h2 class="card-title">Tech Guide Hub</h2>
+                        <span class="status-badge">[ Coming Soon ]</span>
                     </div>
-                    <!-- Add more upcoming here if needed -->
+                    <div class="card card-disabled">
+                        <h2 class="card-title">Project RC</h2>
+                        <span class="status-badge">[ Coming Soon ]</span>
+                    </div>
+                    <div class="card card-disabled">
+                        <h2 class="card-title">Project CR</h2>
+                        <span class="status-badge">[ Coming Soon ]</span>
+                    </div>
+                    <div class="card card-disabled">
+                        <h2 class="card-title">Project Career</h2>
+                        <span class="status-badge">[ Coming Soon ]</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -139,6 +171,7 @@
     </footer>
 
     <script src="hero/hero.js"></script>
+    <script src="js/main.js"></script>
     <script>
         lucide.createIcons();
     </script>
