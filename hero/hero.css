@@ -1,16 +1,18 @@
 /* Scoped styles for the Hero Section */
-/* Isolation: All styles prefixed with #hero-container or specific classes to avoid conflicts */
+/* Isolation: All styles prefixed with #hero-container or specific classes */
 
 #hero-container {
     position: relative;
     width: 100%;
-    min-height: 60vh; /* Standard height */
+    height: 80vh; /* Prominent height */
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: #111111; /* Always dark */
-    transition: background-color 0.3s ease;
+    background-color: #111111; /* Always dark as per strict rule */
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
 }
 
 #hero-canvas {
@@ -19,86 +21,66 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Behind content */
-    pointer-events: none; /* Allow clicks to pass through if needed, though no interactions defined */
+    z-index: 1;
+    pointer-events: none;
 }
 
-#hero-container .hero-content {
+.hero-content {
     position: relative;
-    z-index: 2; /* Above canvas */
+    z-index: 2;
     text-align: center;
-    padding: 0 1rem;
-    pointer-events: none; /* Let clicks pass through text areas unless interaction is added */
+    padding: 0 2rem;
+    pointer-events: none; /* Let clicks pass through to canvas if needed, though mostly visual */
 }
 
 /* Brand Name */
-#hero-container .hero-brand-name {
-    font-family: var(--font-family, sans-serif);
-    font-size: 3rem; /* Large but not shouting */
+.hero-brand-name {
+    font-size: 3.5rem;
     font-weight: 700;
-    color: var(--brand-title-color, #ffffff); /* Strict rule: Brand title always white */
-    letter-spacing: -0.03em;
-    opacity: 0; /* Hidden initially for reveal */
+    letter-spacing: -0.02em;
+    color: #ffffff; /* Locked white */
+    margin: 0;
+    opacity: 0; /* Initial state for reveal */
     transform: translateY(10px);
-    margin-bottom: 1rem;
-    pointer-events: auto; /* Allow text selection */
-
-    /* Reveal animation handled by JS/CSS class */
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+    transition: opacity 2s ease-out, transform 2s ease-out;
+    pointer-events: auto;
 }
 
-#hero-container .hero-brand-name.visible {
+.hero-brand-name.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* Tagline */
-#hero-container .hero-tagline {
-    font-family: var(--font-family, sans-serif);
+.hero-tagline {
     font-size: 1.125rem;
-    color: var(--text-secondary, #a1a1a1); /* Subtle color */
-    font-weight: 400;
-    opacity: 0;
+    font-weight: 300;
+    color: #e0e0e0; /* Slightly muted white */
+    margin-top: 1rem;
+    opacity: 0; /* Initial state for reveal */
     transform: translateY(10px);
-
-    /* Sentence case only */
-    text-transform: none;
-
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-    transition-delay: 0.8s; /* Delay after brand name */
+    transition: opacity 2s ease-out, transform 2s ease-out;
+    transition-delay: 1s; /* Delays after brand name */
+    pointer-events: auto;
 }
 
-#hero-container .hero-tagline.visible {
+.hero-tagline.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 768px) {
     #hero-container {
-        min-height: 60vh;
+        height: 70vh;
     }
 
-    #hero-container .hero-brand-name {
-        font-size: 2rem;
+    .hero-brand-name {
+        font-size: 2.5rem;
     }
 
-    #hero-container .hero-tagline {
+    .hero-tagline {
         font-size: 1rem;
-        max-width: 90%;
-        margin: 0 auto;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #hero-canvas {
-        display: none; /* Disable animation */
-    }
-
-    #hero-container .hero-brand-name,
-    #hero-container .hero-tagline {
-        transition: none;
-        opacity: 1;
-        transform: none;
+        line-height: 1.5;
     }
 }
